@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Car Shop</title>
+</head>
+<body>
+  <h1>Car Shop</h1>
+  <ul id="cars"></ul>
+
+  <script>
+    fetch("/api/cars")
+      .then(res => res.json())
+      .then(cars => {
+        const list = document.getElementById("cars");
+        cars.forEach(car => {
+          const li = document.createElement("li");
+          li.textContent = car.name + " - $" + car.price;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
